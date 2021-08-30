@@ -80,7 +80,7 @@ class Contact{
 }
 
 let contact1 = new Contact("Dhulipala", "Vagdevi", "KPHB", "Hyderabad", "Telangana", "524894", "91 8596486541", "vagdevi52@gmail.com")
-let contact2 = new Contact("Dinesh", "Chowdary", "HI-Tech City", "Hyderabad", "Telangana", "542004", "91 9812287593", "dinesh9@gmail.com")
+let contact2 = new Contact("Lalitha", "Dhulipala", "HI-Tech City", "Hyderabad", "Telangana", "542004", "91 9812287593", "lalitha18@gmail.com")
 let contact3 = new Contact("Swathi", "Chowdary", "Jubliee Hills", "Hyderabad", "Telangana", "561004", "91 9854280202", "swathi11@gmail.com")
 
 var addressBookArray = new Array()
@@ -150,3 +150,13 @@ function findContact(fname, lname){
 let param1 = prompt("Enter the First Name:  ")
 let param2 = prompt("Enter the Last Name:  ")
 findContact(param1, param2)
+
+function deleteContact(fname, lname){
+    let contactToDelete = findContact(fname. lname)
+    addressBookArray.pop(contactToDelete)
+}
+let contact4 = new Contact("vagdevi", "jyothi", "nad", "vijag", "TElangana", "526341", "91 9829280202", "vagdevi@gmail.com")
+addressBookArray.push(contact4)
+let param3 = prompt("Enter the First Name (contact to delete):  ")
+let param4 = prompt("Enter the Last Name (contact to delete):  ")
+deleteContact(param3, param4)
