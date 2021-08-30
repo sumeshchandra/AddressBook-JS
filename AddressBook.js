@@ -194,4 +194,14 @@ class AddressBook {
     for(let i = 0; i < AddressBookArray.length; i++)
         console.log(AddressBookArray[i].toString())
     }
-}    
+
+  //sort by city state zip
+  console.log("Sort Contacts based on \n1. City \n2. State \n3. Zip \n4. None")
+  let inputSort1 = parseInt(prompt("Enter your choice:  "))
+  if(inputSort1 == 1)
+      console.log(AddressBookArray.sort(function(con1, con2) { return con1.city.localeCompare(con2.city)}))
+  if(inputSort1 == 2)
+    console.log(AddressBookArray.sort(function(con1, con2) { return con1.state.localeCompare(con2.state)}))
+  if(inputSort1 == 3)
+      console.log(AddressBookArray.sort(function(con1, con2) { return parseInt(con1.zip) - parseInt(con2.zip)}))
+} 
