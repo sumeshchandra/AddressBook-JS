@@ -1,9 +1,8 @@
 console.log("Welcome to The Address Book JS Program ") 
 class Contact{
-    constructor(...params){
-
-        this.firstName = params[0];
-        this.lastName = params[1];
+    constructor(...params){        
+        this.firstName = params[0]        
+        this.lastName = params[1];        
         this.address = params[2];
         this.city = params[3];
         this.state = params[4];
@@ -12,12 +11,8 @@ class Contact{
         this.email = params[7];
     }
 
-    get firstName()
-    { 
-        return this._firstName
-    }
-    set firstName(firstName)
-    {
+    get firstName(){ return this._firstName}
+    set firstName(firstName){
         let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$')
         if(nameRegex.test(firstName))
             this._firstName = firstName
@@ -81,17 +76,77 @@ class Contact{
         return "FirstName: " + this.firstName + " LastName: " + this.lastName + " Address: " + this.address + " City: " + this.city +
                 " State: " + this.state + " Zip: " + this.zip + " PhoneNO: " + this.phoneNo + " Email: " + this.email;
     }
+
 }
 
-let contact1 = new Contact("Sumesh", "Jena", "B-Colony", "Rourkela", "Odisha","769012","91 987654321","Sumeshjena.co@gmail.com");
-let contact2 = new Contact("Lalitha", "Dhulipala", "HI-Tech City", "Hyderabad", "Telangana", "542004","91 9812287593", "dinesh9@gmail.com")
-let contact3 = new Contact("Subrahmanyam", "Nistala", "Jubliee Hills", "Hyderabad", "Telangana", "561004", "91 9854280202", "swathi11@gmail.com")
+let contact1 = new Contact("Dhulipala", "Vagdevi", "KPHB", "Hyderabad", "Telangana", "524894", "91 8596486541", "vagdevi52@gmail.com")
+let contact2 = new Contact("Dinesh", "Chowdary", "HI-Tech City", "Hyderabad", "Telangana", "542004", "91 9812287593", "dinesh9@gmail.com")
+let contact3 = new Contact("Swathi", "Chowdary", "Jubliee Hills", "Hyderabad", "Telangana", "561004", "91 9854280202", "swathi11@gmail.com")
 
 var addressBookArray = new Array()
 addressBookArray.push(contact1)
 addressBookArray.push(contact2)
 addressBookArray.push(contact3)    
 
-for(let i = 0; i < addressBookArray.length; i++){
-    console.log(addressBookArray[i].toString())
+const prompt = require('prompt-sync')();
+function findContact(fname, lname){
+    let contactToEdit;
+    for(let i = 0; i < addressBookArray.length; i++){
+        if(addressBookArray[i].firstName === fname && addressBookArray[i].lastName === lname)
+            contactToEdit = addressBookArray[i]
+    }
+
+    if(contactToEdit == null)
+        console.log("No Contact Found To Edit")
+    else{
+        let input = 1;
+        while(input != 9){
+            console.log("1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State");
+            console.log("6. Edit ZipCode \n7. Edit Phone No \n8. Edit Email \n9. Exit")
+            input = prompt("Enter Your Choice:  ")
+            input = parseInt(input)
+            switch (input) {
+                case 1:
+                    let fname = prompt("Enter the first Name: ")
+                    contactToEdit.firstName = fname
+                    break
+                case 2:
+                    let lname = prompt("Enter the last Name: ")
+                    contactToEdit.lastName = lname
+                    break
+                case 3:
+                    let address_edit = prompt("Enter the address: ")
+                    contactToEdit.address = address_edit
+                    break
+                case 4:
+                    let city_edit = prompt("Enter the city: ")
+                    contactToEdit.city = city_edit
+                    break
+                case 5:
+                    let state_edit = prompt("Enter the State: ")
+                    contactToEdit.state = state_edit
+                    break
+                case 6:
+                    let zip_edit = prompt("Enter the zip: ")
+                    contactToEdit.zip = zip_edit
+                    break
+                case 7:
+                    let phone_edit = prompt("Enter the phone number: ")
+                    contactToEdit.phoneNo = phone_edit
+                    break
+                case 8:
+                    let mail_edit = prompt("Enter the email: ")
+                    contactToEdit.email = mail_edit
+                    break
+                case 9:
+                    break
+                default:
+                    console.log("Wrong Input")
+            }
+        }
+    }
 }
+
+let param1 = prompt("Enter the First Name:  ")
+let param2 = prompt("Enter the Last Name:  ")
+findContact(param1, param2)
