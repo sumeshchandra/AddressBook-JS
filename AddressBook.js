@@ -1,15 +1,7 @@
 console.log("Welcome to The Address Book JS Program ") 
 class Contact{
-    firstName;
-    lastName;
-    address;
-    city;
-    state;
-    zip;
-    phoneNo;
-    email;
-
     constructor(...params){
+
         this.firstName = params[0];
         this.lastName = params[1];
         this.address = params[2];
@@ -85,7 +77,21 @@ class Contact{
         else throw "Incorrect Email"
     }
 
+    toString(){
+        return "FirstName: " + this.firstName + " LastName: " + this.lastName + " Address: " + this.address + " City: " + this.city +
+                " State: " + this.state + " Zip: " + this.zip + " PhoneNO: " + this.phoneNo + " Email: " + this.email;
+    }
 }
 
-let contact = new Contact("Sumesh", "Jena", "B-Colony", "Rourkela", "Odisha",769012,987654321,"Sumeshjena.co@gmail.com");
-console.log(contact);
+let contact1 = new Contact("Sumesh", "Jena", "B-Colony", "Rourkela", "Odisha","769012","91 987654321","Sumeshjena.co@gmail.com");
+let contact2 = new Contact("Lalitha", "Dhulipala", "HI-Tech City", "Hyderabad", "Telangana", "542004","91 9812287593", "dinesh9@gmail.com")
+let contact3 = new Contact("Subrahmanyam", "Nistala", "Jubliee Hills", "Hyderabad", "Telangana", "561004", "91 9854280202", "swathi11@gmail.com")
+
+var addressBookArray = new Array()
+addressBookArray.push(contact1)
+addressBookArray.push(contact2)
+addressBookArray.push(contact3)    
+
+for(let i = 0; i < addressBookArray.length; i++){
+    console.log(addressBookArray[i].toString())
+}
